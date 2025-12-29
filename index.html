@@ -1,5 +1,4 @@
- <!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -23,12 +22,10 @@ body{
   background:
     linear-gradient(rgba(15,17,21,.70),rgba(15,17,21,.99)),
     url("images/bg.png");
-   
   background-repeat: repeat;
   background-size: auto;
   background-position: top left;
   background-attachment: scroll;
- 
   color:var(--text-main);
   line-height:1.7;
 }
@@ -82,20 +79,33 @@ section{
   padding:100px 20px 80px;
 }
 
+/* HERO */
 .hero{
   display:grid;
-  grid-template-columns:220px 1fr;
+  grid-template-columns:260px 1fr;
   gap:40px;
-  align-items:center;
+  align-items:flex-start;
 }
 
-.hero img{
+.hero-left{
+  display:flex;
+  flex-direction:column;
+}
+
+.hero-left img{
   width:220px;
   border-radius:0;
   border:none;
 }
 
-h1{font-size:34px;margin-bottom:14px}
+.hero-subtitle{
+  font-size:22px;
+  font-weight:400;
+  color:var(--text-muted);
+  margin-bottom:18px;
+}
+
+h1{font-size:34px;margin-bottom:4px}
 h2{font-size:26px;margin-bottom:18px}
 h3{font-size:18px;margin-bottom:10px;color:var(--accent)}
 p{color:var(--text-muted);margin-bottom:14px}
@@ -107,10 +117,7 @@ p{color:var(--text-muted);margin-bottom:14px}
   padding:28px;
 }
 
-.feed ul{
-  list-style:none;
-}
-
+.feed ul{list-style:none}
 .feed li{
   padding:12px 0;
   border-bottom:1px solid var(--border);
@@ -144,12 +151,10 @@ footer{
   font-size:13px;
   color:var(--text-muted);
 }
-
 </style>
 </head>
 
 <body>
-
 
 <header>
 <nav>
@@ -168,20 +173,24 @@ footer{
 </header>
 
 <section id="inicio" class="hero">
-<img src="images/nf.png" alt="Nando Fernandes">
-<div>
-<h1 data-pt="Nando Fernandes - Saúde Integrativa"
-    data-en="Nando Fernandes - Integrative Health"></h1>
 
-<p data-pt="Integração de múltiplas áreas da saúde para um cuidado personalizado e fundamentado"
-   data-en="Integration of multiple health fields for personalized and evidence-based care"></p>
+  <div class="hero-left">
+    <h1 data-pt="Nando Fernandes" data-en="Nando Fernandes"></h1>
+    <h2 class="hero-subtitle" data-pt="Saúde Integrativa" data-en="Integrative Health"></h2>
+    <img src="images/nf.png" alt="Nando Fernandes">
+  </div>
 
-<p data-pt="Estudos em Naturologia, Biomedicina e Nutrição"
-   data-en="Studies in Naturology, Biomedicine and Nutrition"></p>
+  <div class="hero-right">
+    <p data-pt="Integração de múltiplas áreas da saúde para um cuidado personalizado e fundamentado"
+       data-en="Integration of multiple health fields for personalized and evidence-based care"></p>
 
-<p data-pt="Pesquisa e produção acadêmica em Saúde Integral"
-   data-en="Research and academic production in Integrative Health"></p>
-</div>
+    <p data-pt="Estudos em Naturologia, Biomedicina e Nutrição"
+       data-en="Studies in Naturology, Biomedicine and Nutrition"></p>
+
+    <p data-pt="Pesquisa e produção acadêmica em Saúde Integral"
+       data-en="Research and academic production in Integrative Health"></p>
+  </div>
+
 </section>
 
 <section id="sobre">
@@ -189,67 +198,11 @@ footer{
 <div class="card">
 <p data-pt="Sou Luiz Fernando Martins Fernandes (Nando Fernandes), terapeuta integrativo, psicanalista clínico e forense, acupunturista em Medicina Tradicional Chinesa e quiropraxista. Minha atuação clínica é orientada por uma abordagem integrativa, que reúne diferentes práticas terapêuticas a partir de uma leitura ampliada do processo saúde–doença, com atenção à singularidade de cada indivíduo e à relação de interagência."
    data-en="I am Luiz Fernando Martins Fernandes (Nando Fernandes), an integrative therapist, clinical and forensic psychoanalyst, acupuncturist in Traditional Chinese Medicine and chiropractor. My clinical practice is guided by an integrative approach that brings together different therapeutic practices based on an expanded understanding of the health–disease process, with attention to individual singularity and interagency relationships."></p>
-
-<p data-pt="Curso concomitantemente os bacharelados de Naturologia, Nutrição e Biomedicina, com foco no diálogo entre essas áreas no campo da saúde integral. Minha produção acadêmica dedica-se à organização, reflexão crítica e comunicação de modelos integrativos em saúde, mantendo rigor conceitual e base científica."
-   data-en="I am concurrently pursuing bachelor's degrees in Naturology, Nutrition and Biomedicine, focusing on dialogue between these fields within integrative health. My academic production is dedicated to organizing, critically reflecting on and communicating integrative health models, maintaining conceptual rigor and scientific grounding."></p>
-
-<p data-pt="Atualmente integro a diretoria do Centro Acadêmico de Naturologia “Dr. Daniel Maurício de Oliveira Rodrigues”, desempenhando a função de Diretor de Ensino e Divulgação Científica."
-   data-en="I currently serve on the board of the Naturology Academic Center “Dr. Daniel Maurício de Oliveira Rodrigues”, acting as Director of Education and Scientific Dissemination."></p>
-
-<p data-pt="Minha trajetória profissional se desenvolve entre Brasil e Reino Unido, países que compõem minha dupla cidadania. Essa inserção em contextos diversos permite dialogar com diferentes perspectivas culturais, formativas e institucionais, desenvolvendo um olhar globalizado para os desafios atuais da saúde."
-   data-en="My professional trajectory unfolds between Brazil and the United Kingdom, countries that make up my dual citizenship. This experience in diverse contexts enables dialogue with different cultural, educational and institutional perspectives, fostering a globalized view of contemporary health challenges."></p>
-
-<p data-pt="Este site reúne informações sobre minha formação, atuação profissional, pesquisas e produções acadêmicas, funcionando como um espaço de apresentação do meu trabalho."
-   data-en="This website gathers information about my education, professional practice, research and academic production, serving as a space to present my work."></p>
-</div>
-</section>
-
-<section id="pesquisa">
-<h2 data-pt="Pesquisa, Produção Acadêmica e Reflexões"
-    data-en="Research, Academic Production and Reflections"></h2>
-<div class="card feed">
-<p data-pt="Compartilho aqui meus trabalhos sobre saúde integral e naturologia, nutrição e biomedicina em contextos integrativos, além de insights que surgem da prática clínica — reflexões que acompanham minha formação, atravessando diferentes racionalidades em saúde e mantendo-se abertas a novos diálogos e aprofundamentos."
-   data-en="Here I share my work on integrative health, naturology, nutrition and biomedicine in integrative contexts, as well as insights emerging from clinical practice — reflections that accompany my education, crossing different health rationalities and remaining open to new dialogues and deeper inquiry."></p>
-
-<ul id="rss-feed">
-<li>Feed RSS do Blogspot será integrado aqui</li>
-</ul>
-</div>
-</section>
-
-<section id="midias">
-<h2 data-pt="Mídias" data-en="Media"></h2>
-<div class="card">
-<p data-pt="Acompanhe aqui minhas publicações do Instagram — um espaço complementar onde compartilho conteúdo sobre saúde integrativa de forma mais dinâmica e acessível."
-   data-en="Follow my Instagram publications here — a complementary space where I share integrative health content in a more dynamic and accessible way."></p>
-
-<div id="instagram-feed">
-Integração via embed ou API do Instagram
-</div>
-</div>
-</section>
-
-<section id="contato">
-<h2 data-pt="Contato" data-en="Contact"></h2>
-<div class="card">
-<p data-pt="Utilize os canais abaixo para propostas de parcerias profissionais, colaborações acadêmicas ou projetos na área da saúde. No momento, minha agenda está fechada para atendimentos clínicos."
-   data-en="Use the channels below for professional partnership proposals, academic collaborations or health-related projects. At the moment, my schedule is closed for clinical appointments."></p>
-
-<form>
-<input type="text" placeholder="Nome">
-<input type="email" placeholder="E-mail">
-<textarea rows="4" placeholder="Mensagem"></textarea>
-<button type="submit">Enviar</button>
-</form>
 </div>
 </section>
 
 <footer>
-© 2025 Nando Fernandes — Saúde Integrativa e Pesquisa Científica<br>
-Produção acadêmica e atuação profissional no campo da saúde integral.<br>
-Brasil · Reino Unido<br>
-Idiomas: EN | PT<br>
-Todos os direitos reservados.
+© 2025 Nando Fernandes — Saúde Integrativa e Pesquisa Científica
 </footer>
 
 <script>
@@ -261,7 +214,5 @@ function setLang(lang){
 setLang('pt');
 </script>
 
-
- 
 </body>
 </html>
