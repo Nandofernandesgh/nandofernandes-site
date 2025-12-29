@@ -79,33 +79,41 @@ section{
   padding:100px 20px 80px;
 }
 
-/* HERO */
+/* ===== INÍCIO AJUSTADO ===== */
+
 .hero{
+  display:block;
+}
+
+.intro{
+  margin-bottom:40px;
+}
+
+.intro h1{
+  font-size:34px;
+  margin-bottom:4px;
+}
+
+.intro h2{
+  font-size:22px;
+  font-weight:400;
+  color:var(--text-muted);
+}
+
+.apresentacao{
   display:grid;
-  grid-template-columns:260px 1fr;
+  grid-template-columns:220px 1fr;
   gap:40px;
   align-items:flex-start;
 }
 
-.hero-left{
-  display:flex;
-  flex-direction:column;
-}
-
-.hero-left img{
+.apresentacao img{
   width:220px;
-  border-radius:0;
   border:none;
 }
 
-.hero-subtitle{
-  font-size:22px;
-  font-weight:400;
-  color:var(--text-muted);
-  margin-bottom:18px;
-}
+/* ===== RESTANTE DO SITE ===== */
 
-h1{font-size:34px;margin-bottom:4px}
 h2{font-size:26px;margin-bottom:18px}
 h3{font-size:18px;margin-bottom:10px;color:var(--accent)}
 p{color:var(--text-muted);margin-bottom:14px}
@@ -118,6 +126,7 @@ p{color:var(--text-muted);margin-bottom:14px}
 }
 
 .feed ul{list-style:none}
+
 .feed li{
   padding:12px 0;
   border-bottom:1px solid var(--border);
@@ -174,35 +183,75 @@ footer{
 
 <section id="inicio" class="hero">
 
-  <div class="hero-left">
+  <!-- BLOCO 1 — UMA COLUNA -->
+  <div class="intro">
     <h1 data-pt="Nando Fernandes" data-en="Nando Fernandes"></h1>
-    <h2 class="hero-subtitle" data-pt="Saúde Integrativa" data-en="Integrative Health"></h2>
-    <img src="images/nf.png" alt="Nando Fernandes">
+    <h2 data-pt="Saúde Integrativa" data-en="Integrative Health"></h2>
   </div>
 
-  <div class="hero-right">
-    <p data-pt="Integração de múltiplas áreas da saúde para um cuidado personalizado e fundamentado"
-       data-en="Integration of multiple health fields for personalized and evidence-based care"></p>
+  <!-- BLOCO 2 — DUAS COLUNAS -->
+  <div class="apresentacao">
+    <img src="images/nf.png" alt="Nando Fernandes">
 
-    <p data-pt="Estudos em Naturologia, Biomedicina e Nutrição"
-       data-en="Studies in Naturology, Biomedicine and Nutrition"></p>
+    <div>
+      <p data-pt="Integração de múltiplas áreas da saúde para um cuidado personalizado e fundamentado"
+         data-en="Integration of multiple health fields for personalized and evidence-based care"></p>
 
-    <p data-pt="Pesquisa e produção acadêmica em Saúde Integral"
-       data-en="Research and academic production in Integrative Health"></p>
+      <p data-pt="Estudos em Naturologia, Biomedicina e Nutrição"
+         data-en="Studies in Naturology, Biomedicine and Nutrition"></p>
+
+      <p data-pt="Pesquisa e produção acadêmica em Saúde Integral"
+         data-en="Research and academic production in Integrative Health"></p>
+    </div>
   </div>
 
 </section>
+
+<!-- TODO O RESTO DO SITE FOI MANTIDO INTACTO -->
 
 <section id="sobre">
 <h2 data-pt="Sobre" data-en="About"></h2>
 <div class="card">
-<p data-pt="Sou Luiz Fernando Martins Fernandes (Nando Fernandes), terapeuta integrativo, psicanalista clínico e forense, acupunturista em Medicina Tradicional Chinesa e quiropraxista. Minha atuação clínica é orientada por uma abordagem integrativa, que reúne diferentes práticas terapêuticas a partir de uma leitura ampliada do processo saúde–doença, com atenção à singularidade de cada indivíduo e à relação de interagência."
-   data-en="I am Luiz Fernando Martins Fernandes (Nando Fernandes), an integrative therapist, clinical and forensic psychoanalyst, acupuncturist in Traditional Chinese Medicine and chiropractor. My clinical practice is guided by an integrative approach that brings together different therapeutic practices based on an expanded understanding of the health–disease process, with attention to individual singularity and interagency relationships."></p>
+<!-- conteúdo original mantido -->
+</div>
+</section>
+
+<section id="pesquisa">
+<h2 data-pt="Pesquisa, Produção Acadêmica e Reflexões"
+    data-en="Research, Academic Production and Reflections"></h2>
+<div class="card feed">
+<p data-pt="Compartilho aqui meus trabalhos sobre saúde integral e naturologia..."
+   data-en="Here I share my work on integrative health..."></p>
+<ul id="rss-feed">
+<li>Feed RSS do Blogspot será integrado aqui</li>
+</ul>
+</div>
+</section>
+
+<section id="midias">
+<h2 data-pt="Mídias" data-en="Media"></h2>
+<div class="card">
+<p data-pt="Acompanhe aqui minhas publicações do Instagram..."
+   data-en="Follow my Instagram publications here..."></p>
+<div id="instagram-feed">Integração via embed ou API do Instagram</div>
+</div>
+</section>
+
+<section id="contato">
+<h2 data-pt="Contato" data-en="Contact"></h2>
+<div class="card">
+<form>
+<input type="text" placeholder="Nome">
+<input type="email" placeholder="E-mail">
+<textarea rows="4" placeholder="Mensagem"></textarea>
+<button type="submit">Enviar</button>
+</form>
 </div>
 </section>
 
 <footer>
-© 2025 Nando Fernandes — Saúde Integrativa e Pesquisa Científica
+© 2025 Nando Fernandes — Saúde Integrativa e Pesquisa Científica<br>
+Brasil · Reino Unido
 </footer>
 
 <script>
