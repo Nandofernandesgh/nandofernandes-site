@@ -144,10 +144,22 @@ footer{
   font-size:13px;
   color:var(--text-muted);
 }
+ .parallax-bg{
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(15,17,21,.70), rgba(15,17,21,.99)),
+    url("images/bg.png") repeat;
+  background-size: auto;
+  background-position: 0 0;
+  will-change: transform;
+  z-index: -1;
+ }
 </style>
 </head>
 
 <body>
+ <div class="parallax-bg"></div>
 
 <header>
 <nav>
@@ -259,5 +271,13 @@ function setLang(lang){
 setLang('pt');
 </script>
 
+<script>
+window.addEventListener('scroll', () => {
+  const offset = window.scrollY * 0.25;
+  document.querySelector('.parallax-bg')
+    .style.transform = `translateY(${offset}px)`;
+});
+</script>
+ 
 </body>
 </html>
