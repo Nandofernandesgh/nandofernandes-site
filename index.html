@@ -125,11 +125,26 @@ form input, form textarea{
   width:100%;
   background:#0e1016;
   border:2px solid var(--border);
-  color:var(--text-main);
+  color:var(--text-muted);
   padding:10px;
   border-radius:6px;
   margin-bottom:14px;
 }
+
+form input::placeholder,
+form textarea::placeholder{
+  color:#38828C;
+  opacity:1;
+}
+
+form input:focus,
+form textarea:focus{
+  outline: none;
+  border-color: #42B2B8;
+  box-shadow: none;
+}
+
+
 
 form button{
   background:var(--accent);
