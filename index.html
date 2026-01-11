@@ -199,8 +199,8 @@ footer{
   <li><a href="#contato">Contato</a></li>
 </ul>
 <div class="lang-switch">
-  <button onclick="setLang('pt')">BR</button>
-  <button onclick="setLang('en')">UK</button>
+  <button onclick="mudarIdioma('pt')">BR</button>
+  <button onclick="mudarIdioma('en')">UK</button>
 </div>
 </nav>
 </header>
@@ -302,14 +302,51 @@ Todos os direitos reservados
 </footer>
 
 <script>
-function setLang(lang){
-  document.querySelectorAll('[data-pt]').forEach(el=>{
-    el.textContent = el.getAttribute('data-' + lang);
-  });
+// Função para detectar idioma automaticamente
+function detectIdioma() {
+  // 1. Verifica se usuário já escolheu idioma antes
+  const escolhaSalva = localStorage.getItem('meuIdioma');
+  if (escolhaSalva) {
+    mudarIdioma(escolhaSalva);
+    return;
+  }
+  
+  // 2. Detecta localização por IP (FreeIPAPI)
+  fetch('https://freeipapi.com/api/json')
+    .then(resposta => resposta.json())
+    .then(dados => {
+      const pais = dados.countryCode;
+      
+      // Se for Brasil, mostra em português
+      if (pais === 'BR') {
+        mudarIdioma('pt');
+      } else {
+        // Qualquer outro país, mostra em inglês
+        mudarIdioma('en');
+      }
+    })
+    .catch(erro => {
+      console.log('Erro na detecção, usando inglês como padrão');
+      mudarIdioma('en'); // Padrão: inglês
+    });
 }
-setLang('pt');
-</script>
 
+// Função para mudar idioma
+function mudarIdioma(idioma) {
+  // Traduz todos os textos
+  document.querySelectorAll('[data-pt]').forEach(elemento => {
+    elemento.textContent = elemento.getAttribute('data-' + idioma);
+  });
+  
+  // Salva preferência do usuário
+  localStorage.setItem('meuIdioma', idioma);
+  
+  console.log('Idioma mudado para:', idioma);
+}
+
+// Quando a página carregar, detecta idioma
+document.addEventListener('DOMContentLoaded', detectIdioma);
+</script>
 
  
 </body>
