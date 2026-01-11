@@ -302,57 +302,36 @@ Todos os direitos reservados
 </footer>
 
 <script>
-// FUNÇÃO PARA MUDAR IDIOMA
-function mudarIdioma(idioma) {
-  // Traduz todos os textos
-  document.querySelectorAll('[data-pt]').forEach(elemento => {
-    elemento.textContent = elemento.getAttribute('data-' + idioma);
-  });
-  
-  // Atualiza os placeholders do formulário
-  if (idioma === 'en') {
-    document.querySelector('input[placeholder="Nome"]').placeholder = 'Name';
-    document.querySelector('textarea[placeholder="Mensagem"]').placeholder = 'Message';
-  } else {
-    document.querySelector('input[placeholder="Name"]').placeholder = 'Nome';
-    document.querySelector('textarea[placeholder="Message"]').placeholder = 'Mensagem';
-  }
-  
-  // Salva a preferência
-  localStorage.setItem('meuIdioma', idioma);
-}
-
-// DETECÇÃO SIMPLES SEM API
-function detectarIdiomaAutomatico() {
-  // 1. Respeita escolha anterior do usuário
+async function detectarIdiomaPorIP() {
+  // 1. Respeita escolha manual do usuário
   const escolhaSalva = localStorage.getItem('meuIdioma');
   if (escolhaSalva) {
     mudarIdioma(escolhaSalva);
     return;
   }
-  
-  // 2. Detecta idioma do navegador (99% preciso)
-  const idiomaNavegador = navigator.language || navigator.userLanguage || '';
-  
-  // Se o navegador estiver em português, usa português
-  if (idiomaNavegador.includes('pt') || idiomaNavegador.includes('PT')) {
+
+  try {
+    const response = await fetch('https://freeipapi.com/api/json');
+    const data = await response.json();
+
+    // 2. Define idioma pelo país
+    if (data.countryCode === 'BR') {
+      mudarIdioma('pt');
+    } else {
+      mudarIdioma('en');
+    }
+
+  } catch (error) {
+    // 3. Fallback seguro (se API falhar)
     mudarIdioma('pt');
-  } else {
-    // Qualquer outro idioma, usa inglês
-    mudarIdioma('en');
+    console.warn('Falha na geolocalização. Idioma padrão aplicado.');
   }
 }
 
-// Executa quando a página carrega
-document.addEventListener('DOMContentLoaded', function() {
-  // Pequeno delay para garantir que tudo carregou
-  setTimeout(detectarIdiomaAutomatico, 100);
+// Executa ao carregar
+document.addEventListener('DOMContentLoaded', () => {
+  detectarIdiomaPorIP();
 });
-
-// FUNÇÃO DOS BOTÕES (mantém igual)
-function setLang(lang) {
-  mudarIdioma(lang);
-}
 </script>
 
  
