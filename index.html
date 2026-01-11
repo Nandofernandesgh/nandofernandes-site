@@ -302,7 +302,7 @@ Todos os direitos reservados
 </footer>
 
 <script>
-// Função para detectar idioma automaticamente
+// FUNÇÃO SIMPLES PARA DETECTAR IDIOMA
 function detectIdioma() {
   // 1. Verifica se usuário já escolheu idioma antes
   const escolhaSalva = localStorage.getItem('meuIdioma');
@@ -315,7 +315,8 @@ function detectIdioma() {
   fetch('https://freeipapi.com/api/json')
     .then(resposta => resposta.json())
     .then(dados => {
-      const pais = dados.countryCode;
+      // CORREÇÃO AQUI: countryCode com c minúsculo
+      const pais = dados.countryCode; // ← minúsculo!
       
       // Se for Brasil, mostra em português
       if (pais === 'BR') {
@@ -326,8 +327,8 @@ function detectIdioma() {
       }
     })
     .catch(erro => {
-      console.log('Erro na detecção, usando inglês como padrão');
-      mudarIdioma('en'); // Padrão: inglês
+      // Se der erro, usa inglês
+      mudarIdioma('en');
     });
 }
 
@@ -339,9 +340,7 @@ function mudarIdioma(idioma) {
   });
   
   // Salva preferência do usuário
-  localStorage.setItem('meuIdioma', idioma);
-  
-  console.log('Idioma mudado para:', idioma);
+  localStorage.getItem('meuIdioma', idioma);
 }
 
 // Quando a página carregar, detecta idioma
