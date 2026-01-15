@@ -289,17 +289,117 @@ Integração via embed ou API do Instagram
 <div class="card">
 <p data-pt="Utilize os canais abaixo para propostas de parcerias profissionais, colaborações acadêmicas ou projetos na área da saúde. No momento, minha agenda está fechada para atendimentos clínicos."
    data-en="Use the channels below for professional partnership proposals, academic collaborations or health-related projects. At the moment, my schedule is closed for clinical appointments.">
-Utilize os canais abaixo para propostas de parcerias profissionais, colaborações acadêmicas ou projetos na área da saúde. No momento, minha agenda está fechada para atendimentos clínicos.
+Use the channels below for professional partnership proposals, academic collaborations or health-related projects. At the moment, my schedule is closed for clinical appointments.
 </p>
 
-<form>
-<input type="text" placeholder="Nome">
-<input type="email" placeholder="E-mail">
-<textarea rows="4" placeholder="Mensagem"></textarea>
-<button type="submit">Enviar</button>
+<form id="contact-form">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+  
+  <!-- Message display area -->
+  <div id="form-message" style="display:none; padding:12px; margin:12px 0; border-radius:6px; font-size:14px;"></div>
+  
+  <button type="submit" id="submit-btn">Send Message</button>
 </form>
 </div>
 </section>
+
+<!-- Add this JavaScript BEFORE the closing </body> tag -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const messageDiv = document.getElementById('form-message');
+  
+  if (!form) return; // Safety check
+  
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Disable button and show "sending"
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.style.opacity = '0.7';
+    
+    // Hide previous message
+    messageDiv.style.display = 'none';
+    
+    // Prepare data
+    const formData = new FormData(this);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    };
+    
+    try {
+      // Your Worker URL
+      const workerURL = 'https://contact-form.nandofernandes-email.workers.dev';
+      
+      const response = await fetch(workerURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        // Success
+        messageDiv.textContent = '✅ Message sent successfully!';
+        messageDiv.style.backgroundColor = 'rgba(76, 175, 80, 0.15)';
+        messageDiv.style.color = '#4CAF50';
+        messageDiv.style.border = '1px solid #4CAF50';
+        messageDiv.style.display = 'block';
+        
+        // Clear form
+        form.reset();
+        
+        // Success button state
+        submitBtn.textContent = '✓ Sent!';
+        submitBtn.style.backgroundColor = '#4CAF50';
+        
+        // Restore after 4 seconds
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.backgroundColor = '';
+          submitBtn.style.opacity = '1';
+          submitBtn.disabled = false;
+          messageDiv.style.display = 'none';
+        }, 4000);
+        
+      } else {
+        // Error from server
+        throw new Error(result.error || 'Failed to send message');
+      }
+      
+    } catch (error) {
+      // Request error
+      messageDiv.textContent = `❌ ${error.message || 'Failed to send message. Please try again.'}`;
+      messageDiv.style.backgroundColor = 'rgba(244, 67, 54, 0.15)';
+      messageDiv.style.color = '#f44336';
+      messageDiv.style.border = '1px solid #f44336';
+      messageDiv.style.display = 'block';
+      
+      // Restore button
+      submitBtn.textContent = 'Error - Click to retry';
+      submitBtn.style.backgroundColor = '#f44336';
+      
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.backgroundColor = '';
+        submitBtn.style.opacity = '1';
+        submitBtn.disabled = false;
+        messageDiv.style.display = 'none';
+      }, 3000);
+    }
+  });
+});
+</script>
 
 <footer>
 © 2026 Nando Fernandes — Integrative Health<br>
