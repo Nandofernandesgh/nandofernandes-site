@@ -296,111 +296,91 @@ Use the channels below for professional partnership proposals, academic collabor
   <input type="text" name="name" placeholder="Name" required>
   <input type="email" name="email" placeholder="Email" required>
   <textarea name="message" rows="4" placeholder="Your message" required></textarea>
-  
-  <!-- Message display area -->
-  <div id="form-message" style="display:none; padding:12px; margin:12px 0; border-radius:6px; font-size:14px;"></div>
-  
+
+  <!-- Formsubmit config -->
+  <input type="hidden" name="_subject" value="New contact form submission">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+
+  <!-- feedback -->
+  <div id="form-message"
+       style="display:none; padding:12px; margin:12px 0; border-radius:6px; font-size:14px;">
+  </div>
+
   <button type="submit" id="submit-btn">Send Message</button>
 </form>
-</div>
-</section>
 
-<!-- Add this JavaScript BEFORE the closing </body> tag -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const messageDiv = document.getElementById('form-message');
-  
-  if (!form) return; // Safety check
-  
-  form.addEventListener('submit', async function(e) {
+  const button = document.getElementById('submit-btn');
+  const messageBox = document.getElementById('form-message');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Disable button and show "sending"
-    submitBtn.disabled = true;
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.style.opacity = '0.7';
-    
-    // Hide previous message
-    messageDiv.style.display = 'none';
-    
-    // Prepare data
-    const formData = new FormData(this);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message')
-    };
-    
+
+    button.disabled = true;
+    const originalText = button.textContent;
+    button.textContent = 'Sending…';
+    button.style.opacity = '0.7';
+
+    messageBox.style.display = 'none';
+
+    const formData = new FormData(form);
+
     try {
-      // Your Worker URL
-      const workerURL = 'https://contact-form.nandofernandes-email.workers.dev';
-      
-      const response = await fetch(workerURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
-      
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
-        // Success
-        messageDiv.textContent = '✅ Message sent successfully!';
-        messageDiv.style.backgroundColor = 'rgba(76, 175, 80, 0.15)';
-        messageDiv.style.color = '#4CAF50';
-        messageDiv.style.border = '1px solid #4CAF50';
-        messageDiv.style.display = 'block';
-        
-        // Clear form
-        form.reset();
-        
-        // Success button state
-        submitBtn.textContent = '✓ Sent!';
-        submitBtn.style.backgroundColor = '#4CAF50';
-        
-        // Restore after 4 seconds
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.style.backgroundColor = '';
-          submitBtn.style.opacity = '1';
-          submitBtn.disabled = false;
-          messageDiv.style.display = 'none';
-        }, 4000);
-        
-      } else {
-        // Error from server
-        throw new Error(result.error || 'Failed to send message');
+      const response = await fetch(
+        'https://formsubmit.co/ajax/info@nandofernandes.com',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Request failed');
       }
-      
-    } catch (error) {
-      // Request error
-      messageDiv.textContent = `❌ ${error.message || 'Failed to send message. Please try again.'}`;
-      messageDiv.style.backgroundColor = 'rgba(244, 67, 54, 0.15)';
-      messageDiv.style.color = '#f44336';
-      messageDiv.style.border = '1px solid #f44336';
-      messageDiv.style.display = 'block';
-      
-      // Restore button
-      submitBtn.textContent = 'Error - Click to retry';
-      submitBtn.style.backgroundColor = '#f44336';
-      
+
+      messageBox.textContent = '✅ Message sent successfully!';
+      messageBox.style.backgroundColor = 'rgba(76,175,80,0.15)';
+      messageBox.style.color = '#4CAF50';
+      messageBox.style.border = '1px solid #4CAF50';
+      messageBox.style.display = 'block';
+
+      form.reset();
+
+      button.textContent = '✓ Sent';
+      button.style.backgroundColor = '#4CAF50';
+
       setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.style.backgroundColor = '';
-        submitBtn.style.opacity = '1';
-        submitBtn.disabled = false;
-        messageDiv.style.display = 'none';
+        button.textContent = originalText;
+        button.style.backgroundColor = '';
+        button.style.opacity = '1';
+        button.disabled = false;
+        messageBox.style.display = 'none';
+      }, 4000);
+
+    } catch (err) {
+      messageBox.textContent = '❌ Error sending message. Please try again.';
+      messageBox.style.backgroundColor = 'rgba(244,67,54,0.15)';
+      messageBox.style.color = '#f44336';
+      messageBox.style.border = '1px solid #f44336';
+      messageBox.style.display = 'block';
+
+      button.textContent = 'Error — try again';
+      button.style.backgroundColor = '#f44336';
+
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.style.backgroundColor = '';
+        button.style.opacity = '1';
+        button.disabled = false;
+        messageBox.style.display = 'none';
       }, 3000);
     }
   });
 });
 </script>
-
 <footer>
 © 2026 Nando Fernandes — Integrative Health<br>
 United Kingdom · Brazil<br>
