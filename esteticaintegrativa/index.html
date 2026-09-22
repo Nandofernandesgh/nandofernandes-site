@@ -1,1 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Estética Integrativa — projeto, palestra e próximos passos.">
+<title>Estética Integrativa — Projeto</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
+:root{
+  --navy:#153d67;
+  --blue:#2e80b9;
+  --sky:#dff1f7;
+  --ice:#f5fbfc;
+  --white:#ffffff;
+  --text:#24445d;
+  --muted:#668096;
+  --line:rgba(21,61,103,.15);
+  --teal:#4c9d9a;
+  --teal-soft:rgba(76,157,154,.14);
+  --shadow:0 22px 60px rgba(21,61,103,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Inter',Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 12%,rgba(255,255,255,.95) 0 10%,transparent 28%),
+    linear-gradient(145deg,#e9f7fa 0%,#c9e8f1 42%,#7fc1d8 100%);
+  overflow-x:hidden;
+}
+body::before,body::after{
+  content:"";
+  position:fixed;
+  pointer-events:none;
+  z-index:0;
+  opacity:.38;
+}
+body::before{
+  width:440px;height:440px;left:-260px;bottom:-190px;
+  border:1px solid rgba(76,157,154,.24);border-radius:50%;
+  box-shadow:55px -28px 0 -1px rgba(76,157,154,.14),
+             112px -58px 0 -1px rgba(76,157,154,.11),
+             170px -88px 0 -1px rgba(76,157,154,.08);
+}
+body::after{
+  width:380px;height:380px;right:-250px;top:-190px;
+  border:1px solid rgba(76,157,154,.20);border-radius:50%;
+  box-shadow:-48px 25px 0 -1px rgba(76,157,154,.13),
+             -98px 52px 0 -1px rgba(76,157,154,.09);
+}
+main{
+  position:relative;z-index:1;width:min(960px,100%);margin:auto;
+  padding:48px 22px 60px;
+}
+.hero{text-align:center;max-width:760px;margin:auto}
+.lotus{width:92px;height:70px;margin:0 auto 15px;display:block}
+.lotus svg{display:block;width:100%;height:100%;overflow:visible}
+.kicker{
+  color:var(--blue);font-size:12px;font-weight:bold;letter-spacing:.19em;
+  text-transform:uppercase;margin:0 0 12px;
+}
+h1{
+  margin:0;
+  font-family:'Cormorant Garamond', Georgia, serif;
+  font-size:clamp(52px, 10vw, 86px);
+  font-weight:600;
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--navy);
+  text-shadow:1px 2px 3px rgba(0,0,0,.28);
+}
+.subtitle{
+  margin:14px 0 0;font-family:Georgia,'Times New Roman',serif;
+  font-size:20px;font-weight:700;color:var(--teal);
+}
+.card{
+  margin:42px auto 0;max-width:790px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(255,255,255,.9);border-radius:28px;
+  box-shadow:var(--shadow);padding:45px 48px;backdrop-filter:blur(8px);
+}
+.card > p{text-align:justify}
+.section-title{
+  color:var(--blue);font-size:12px;font-weight:bold;letter-spacing:.19em;
+  text-transform:uppercase;margin:0 0 12px;line-height:1.2;
+}
+p{font-size:17px;line-height:1.75;margin:0 0 18px}
+.event-meta{
+  margin:34px 0;
+  padding:24px 25px;
+  background:#dff1f7;
+  border-left:4px solid var(--blue);
+  border-radius:0 15px 15px 0;
+}
+.event-meta .date{
+  color:var(--blue);font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;margin:0 0 7px;
+}
+.event-meta h3{
+  color:var(--navy);font-size:22px;line-height:1.35;margin:0 0 9px
+}
+.event-meta p{margin:0;font-size:15px;line-height:1.65}
+.closed{
+  display:inline-block;margin-top:14px;color:var(--blue);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase
+}
+.event-banner{
+  margin:34px auto 0;
+  width:min(100%,790px);
+  aspect-ratio:1/1;
+  border:1px dashed rgba(21,61,103,.30);
+  border-radius:22px;
+  background:rgba(255,255,255,.38);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#668096;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:20px;
+}
+.project-continuation{
+  margin-top:34px;
+  padding-top:28px;
+  border-top:1px solid rgba(21,61,103,.11);
+}
+.project-continuation p{
+  margin:0;
+  text-align:justify;
+}
+.notify{
+  margin-top:35px;
+  padding-top:32px;
+  border-top:1px solid rgba(21,61,103,.11);
+  text-align:center
+}
+.notify h3{color:var(--navy);font-size:clamp(15px,4vw,19px);margin:0 0 9px;white-space:nowrap}
+.notify>p{
+  font-size:15px;color:var(--muted);max-width:620px;
+  margin:0 auto 22px;text-align:center
+}
+.notify-form{max-width:430px;margin:0 auto;text-align:left}
+.notify-form input{margin-bottom:12px}
+button{
+  border:0;border-radius:14px;background:var(--navy);color:white;
+  padding:16px 28px;font-size:15px;font-weight:bold;cursor:pointer;
+  box-shadow:0 9px 22px rgba(21,61,103,.18);
+}
+button:hover{background:#1d5788}
+input{
+  width:100%;padding:15px;border-radius:12px;
+  border:1px solid rgba(21,61,103,.18);font:inherit;outline:none;
+}
+input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(46,128,185,.11)
+}
+label{
+  display:block;font-size:13px;font-weight:bold;
+  color:var(--navy);margin-bottom:7px
+}
+.small{
+  font-size:11px!important;color:#7890a1!important;
+  line-height:1.5!important;margin-top:12px!important;text-align:left!important
+}
+footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
+
+@media(max-width:600px){
+  main{padding:35px 15px 45px}
+  .lotus{width:82px;height:64px}
+  .card{padding:31px 24px;border-radius:22px}
+  .event-banner{border-radius:18px}
+  .event-meta{padding:21px 20px}
+  .event-meta h3{font-size:20px}
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+<div class="lotus" aria-label="Símbolo de lótus">
+<svg viewBox="-250 -260 500 320" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs><g id="petal"><path d="M 0,0 C -55,-90 -52,-200 0,-240 C 52,-200 55,-90 0,0 Z" /></g></defs>
+<g stroke="#0072CE" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<use href="#petal" transform="rotate(-63)" /><use href="#petal" transform="rotate(-42)" />
+<use href="#petal" transform="rotate(-21)" /><use href="#petal" transform="rotate(0)" />
+<use href="#petal" transform="rotate(21)" /><use href="#petal" transform="rotate(42)" />
+<use href="#petal" transform="rotate(63)" />
+</g></svg>
+</div>
+<p class="kicker">PROJETO · ESTÉTICA INTEGRATIVA</p>
+<h1>Estética Integrativa</h1>
+<p class="subtitle">Além da aparência</p>
+</header>
+
+<section class="card">
+<h2 class="section-title">UMA NOVA PERSPECTIVA SOBRE O CUIDADO ESTÉTICO</h2>
+
+<p><strong>Estética Integrativa: além da aparência</strong> é um projeto que nasce a partir dos meus estudos em saúde integrativa e naturologia, assim como de experiências e reflexões sobre a Estética neste mesmo campo.</p>
+
+<p>A proposta é ampliar o olhar para além da queixa estética, considerando a pessoa, seu contexto e a experiência do cuidado, sem perder de vista os objetivos e os limites próprios da atuação estética.</p>
+
+<div class="event-meta">
+<p class="date">25 de setembro de 2026</p>
+<h3>Palestra — Estética Integrativa: além da aparência</h3>
+<p>Exclusiva para a turma do Bacharelado em Estética e Cosmética — UFBRA.</p>
+<span class="closed">Inscrições encerradas</span>
+</div>
+
+<div class="event-banner">
+<span>ESPAÇO RESERVADO PARA O BANNER DA PALESTRA<br>Substituir pela URL da imagem</span>
+</div>
+
+<div class="project-continuation">
+<p>Esta palestra marca o início de um projeto maior. A partir desta experiência, novos conteúdos e uma formação mais completa estão sendo desenvolvidos.</p>
+</div>
+
+<div class="notify">
+<h3>Quer acompanhar os próximos passos?</h3>
+<p>Cadastre seu e-mail para receber informações sobre a próxima palestra e ser avisado quando o curso completo estiver disponível.</p>
+<button type="button" id="notifyButton">QUERO SER AVISADO</button>
+<div class="notify-form">
+<label for="email">Seu e-mail</label>
+<input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+<p class="small">Seu e-mail será utilizado para comunicações relacionadas ao projeto Estética Integrativa.</p>
+</div>
+</div>
+
+</section>
+<footer>nandofernandes.com · Estética Integrativa</footer>
+</main>
+
+<script>
+const notify=document.getElementById('notifyButton');
+const email=document.getElementById('email');
+const form=document.querySelector('.notify-form');
+
+form.style.display='none';
+
+notify.addEventListener('click',()=>{
+  if(form.style.display==='none'){
+    form.style.display='block';
+    email.focus();
+    return;
+  }
+  const value=email.value.trim();
+  if(!value || !value.includes('@')){
+    alert('Informe um e-mail válido.');
+    return;
+  }
+  alert('Demonstração: o cadastro da lista de interesse será conectado ao serviço de e-mail na versão final.');
+});
+</script>
+</body>
+                                               </html>
