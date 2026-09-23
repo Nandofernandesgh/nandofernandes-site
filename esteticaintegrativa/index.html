@@ -55,30 +55,61 @@ main{
   position:relative;z-index:1;width:min(960px,100%);margin:auto;
   padding:48px 22px 60px;
 }
-.hero{text-align:center;max-width:760px;margin:auto}
-.lotus{width:68px;height:46px;margin:0 auto 15px;display:block}
-.lotus img{display:block;width:100%;height:100%;object-fit:contain}
-.kicker{
-  color:var(--blue);font-size:12px;font-weight:bold;letter-spacing:.19em;
-  text-transform:uppercase;margin:0 0 12px;
+
+/* --- AJUSTES DO TOPO (HERO) --- */
+.hero{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 42px; /* Espaço entre o topo e o card */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
+
+.kicker{
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  margin:0 0 24px 0; /* Espaço para empurrar o logo para baixo */
+  order:1; /* Garante que fique no topo */
+}
+
+.lotus{
+  width:72px;
+  height:50px;
+  margin:0 auto 18px; /* Espaço entre logo e título */
+  display:block;
+  order:2;
+}
+.lotus img{display:block;width:100%;height:100%;object-fit:contain}
+
 h1{
   margin:0;
   font-family:'Times New Roman',Georgia,serif;
-  font-size:clamp(45px, 10vw, 75px);
+  font-size:clamp(42px, 9vw, 68px);
   font-weight:400;
-  line-height:1.1;
+  line-height:1.05;
   letter-spacing:-0.01em;
   color:var(--navy);
   text-shadow:1px 2px 3px rgba(0,0,0,.28);
   white-space:nowrap;
+  order:3;
 }
+
 .subtitle{
-  margin:14px 0 0;font-family:Georgia,'Times New Roman',serif;
-  font-size:18px;font-weight:700;color:var(--teal);
+  margin:4px 0 0; /* Bem junto do título para parecer continuação */
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:19px;
+  font-weight:600;
+  color:var(--teal);
+  order:4;
 }
+
+/* --- RESTANTE DO ESTILO --- */
 .card{
-  margin:42px auto 0;max-width:790px;
+  margin:0 auto;max-width:790px;
   background:rgba(255,255,255,.92);
   border:1px solid rgba(255,255,255,.9);border-radius:28px;
   box-shadow:var(--shadow);padding:45px 48px;backdrop-filter:blur(8px);
@@ -162,12 +193,15 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 
 @media(max-width:600px){
   main{padding:35px 15px 45px}
-  .lotus{width:60px;height:40px}
+  .hero{margin-bottom:30px}
+  .kicker{margin-bottom:18px}
+  .lotus{width:60px;height:42px;margin-bottom:14px}
   .card{padding:31px 24px;border-radius:22px}
   .event-banner{border-radius:18px}
   .event-meta{padding:21px 20px}
   .event-meta h3{font-size:20px}
-  h1{white-space:normal;font-size:clamp(36px, 8vw, 47px);}
+  h1{white-space:normal;font-size:clamp(34px, 8vw, 44px);}
+  .subtitle{font-size:17px;margin-top:2px}
 }
 </style>
 </head>
@@ -175,12 +209,19 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 <main>
 
 <header class="hero">
-<div class="lotus" aria-label="Símbolo de lótus">
-<img src="../images/lotuslogo.png" alt="Logo Lótus">
-</div>
-<p class="kicker">ESPAÇO EDUCACIONAL · PROJETO</p>
-<h1>Estética Integrativa</h1>
-<p class="subtitle">Além da aparência</p>
+  <!-- 1. Topo -->
+  <p class="kicker">Espaço Educacional · Projeto</p>
+  
+  <!-- 2. Logo -->
+  <div class="lotus" aria-label="Símbolo de lótus">
+    <img src="../images/lotuslogo.png" alt="Logo Lótus">
+  </div>
+  
+  <!-- 3. Título Principal -->
+  <h1>Estética Integrativa</h1>
+  
+  <!-- 4. Subtítulo próximo -->
+  <p class="subtitle">Além da aparência</p>
 </header>
 
 <section class="card">
