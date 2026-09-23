@@ -6,8 +6,6 @@
 <meta name="description" content="Estética Integrativa — projeto, palestra e próximos passos.">
 <title>Estética Integrativa — Projeto</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
 :root{
   --navy:#153d67;
   --blue:#2e80b9;
@@ -58,25 +56,26 @@ main{
   padding:48px 22px 60px;
 }
 .hero{text-align:center;max-width:760px;margin:auto}
-.lotus{width:92px;height:70px;margin:0 auto 15px;display:block}
-.lotus svg{display:block;width:100%;height:100%;overflow:visible}
+.lotus{width:68px;height:46px;margin:0 auto 15px;display:block}
+.lotus img{display:block;width:100%;height:100%;object-fit:contain}
 .kicker{
   color:var(--blue);font-size:12px;font-weight:bold;letter-spacing:.19em;
   text-transform:uppercase;margin:0 0 12px;
 }
 h1{
   margin:0;
-  font-family:'Cormorant Garamond', Georgia, serif;
-  font-size:clamp(52px, 10vw, 86px);
-  font-weight:600;
-  line-height:1.05;
-  letter-spacing:-0.02em;
+  font-family:'Times New Roman',Georgia,serif;
+  font-size:clamp(38px, 8vw, 62px);
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-0.01em;
   color:var(--navy);
   text-shadow:1px 2px 3px rgba(0,0,0,.28);
+  white-space:nowrap;
 }
 .subtitle{
   margin:14px 0 0;font-family:Georgia,'Times New Roman',serif;
-  font-size:20px;font-weight:700;color:var(--teal);
+  font-size:17px;font-weight:700;color:var(--teal);
 }
 .card{
   margin:42px auto 0;max-width:790px;
@@ -89,7 +88,7 @@ h1{
   color:var(--blue);font-size:12px;font-weight:bold;letter-spacing:.19em;
   text-transform:uppercase;margin:0 0 12px;line-height:1.2;
 }
-p{font-size:17px;line-height:1.75;margin:0 0 18px}
+p{font-size:16px;line-height:1.75;margin:0 0 18px}
 .event-meta{
   margin:34px 0;
   padding:24px 25px;
@@ -131,7 +130,8 @@ p{font-size:17px;line-height:1.75;margin:0 0 18px}
 }
 .project-continuation p{
   margin:0;
-  text-align:justify;
+  text-align:left;
+  font-size:15px;
 }
 .notify{
   margin-top:35px;
@@ -162,11 +162,12 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 
 @media(max-width:600px){
   main{padding:35px 15px 45px}
-  .lotus{width:82px;height:64px}
+  .lotus{width:60px;height:40px}
   .card{padding:31px 24px;border-radius:22px}
   .event-banner{border-radius:18px}
   .event-meta{padding:21px 20px}
   .event-meta h3{font-size:20px}
+  h1{white-space:normal;font-size:clamp(32px, 7vw, 52px);}
 }
 </style>
 </head>
@@ -175,14 +176,7 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 
 <header class="hero">
 <div class="lotus" aria-label="Símbolo de lótus">
-<svg viewBox="-250 -260 500 320" xmlns="http://www.w3.org/2000/svg" role="img">
-<defs><g id="petal"><path d="M 0,0 C -55,-90 -52,-200 0,-240 C 52,-200 55,-90 0,0 Z" /></g></defs>
-<g stroke="#0072CE" stroke-width="11" fill="none" stroke-linecap="round" stroke-linejoin="round">
-<use href="#petal" transform="rotate(-63)" /><use href="#petal" transform="rotate(-42)" />
-<use href="#petal" transform="rotate(-21)" /><use href="#petal" transform="rotate(0)" />
-<use href="#petal" transform="rotate(21)" /><use href="#petal" transform="rotate(42)" />
-<use href="#petal" transform="rotate(63)" />
-</g></svg>
+<img src="image/lotuslogo.png" alt="Logo Lótus">
 </div>
 <p class="kicker">PROJETO · ESTÉTICA INTEGRATIVA</p>
 <h1>Estética Integrativa</h1>
@@ -192,9 +186,9 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 <section class="card">
 <h2 class="section-title">UMA NOVA PERSPECTIVA SOBRE O CUIDADO ESTÉTICO</h2>
 
-<p><strong>Estética Integrativa: além da aparência</strong> é um projeto que nasce a partir dos meus estudos em saúde integrativa e naturologia, assim como de experiências e reflexões sobre a Estética neste mesmo campo.</p>
+<p style="text-align:left;font-size:15px;"><strong>Estética Integrativa: além da aparência</strong> é um projeto que nasce a partir dos meus estudos em saúde integrativa e naturologia, assim como de experiências e reflexões sobre a Estética neste mesmo campo.</p>
 
-<p>A proposta é ampliar o olhar para além da queixa estética, considerando a pessoa, seu contexto e a experiência do cuidado, sem perder de vista os objetivos e os limites próprios da atuação estética.</p>
+<p style="text-align:left;font-size:15px;">A proposta é ampliar o olhar para além da queixa estética, considerando a pessoa, seu contexto e a experiência do cuidado, sem perder de vista os objetivos e os limites próprios da atuação estética.</p>
 
 <div class="event-meta">
 <p class="date">25 de setembro de 2026</p>
@@ -226,4 +220,4 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 
 
 </body>
-  </html>
+</html>
