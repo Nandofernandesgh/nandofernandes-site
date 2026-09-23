@@ -113,19 +113,17 @@ p{font-size:17px;line-height:1.75;margin:0 0 18px}
   margin:34px auto 0;
   width:min(100%,790px);
   aspect-ratio:1/1;
-  border:1px dashed rgba(21,61,103,.30);
   border-radius:22px;
+  overflow:hidden;
   background:rgba(255,255,255,.38);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#668096;
-  font-size:12px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  text-align:center;
-  padding:20px;
 }
+.event-banner img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
 .project-continuation{
   margin-top:34px;
   padding-top:28px;
@@ -146,29 +144,19 @@ p{font-size:17px;line-height:1.75;margin:0 0 18px}
   font-size:15px;color:var(--muted);max-width:620px;
   margin:0 auto 22px;text-align:center
 }
-.notify-form{max-width:430px;margin:0 auto;text-align:left}
-.notify-form input{margin-bottom:12px}
-button{
-  border:0;border-radius:14px;background:var(--navy);color:white;
-  padding:16px 28px;font-size:15px;font-weight:bold;cursor:pointer;
-  box-shadow:0 9px 22px rgba(21,61,103,.18);
+.kit-form{
+  max-width:430px;
+  margin:0 auto;
+  text-align:left;
 }
-button:hover{background:#1d5788}
-input{
-  width:100%;padding:15px;border-radius:12px;
-  border:1px solid rgba(21,61,103,.18);font:inherit;outline:none;
-}
-input:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 4px rgba(46,128,185,.11)
-}
-label{
-  display:block;font-size:13px;font-weight:bold;
-  color:var(--navy);margin-bottom:7px
+.kit-note{
+  max-width:430px;
+  margin:12px auto 0!important;
+  text-align:left!important;
 }
 .small{
   font-size:11px!important;color:#7890a1!important;
-  line-height:1.5!important;margin-top:12px!important;text-align:left!important
+  line-height:1.5!important;
 }
 footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 
@@ -216,7 +204,7 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 </div>
 
 <div class="event-banner">
-<span>ESPAÇO RESERVADO PARA O BANNER DA PALESTRA<br>Substituir pela URL da imagem</span>
+<img src="../images/palestraesteticaintegrativa.png" alt="Banner da palestra Estética Integrativa">
 </div>
 
 <div class="project-continuation">
@@ -226,38 +214,16 @@ footer{text-align:center;color:#527188;font-size:12px;margin-top:30px}
 <div class="notify">
 <h3>Quer acompanhar os próximos passos?</h3>
 <p>Cadastre seu e-mail para receber informações sobre a próxima palestra e ser avisado quando o curso completo estiver disponível.</p>
-<button type="button" id="notifyButton">QUERO SER AVISADO</button>
-<div class="notify-form">
-<label for="email">Seu e-mail</label>
-<input type="email" id="email" placeholder="seuemail@exemplo.com" required>
-<p class="small">Seu e-mail será utilizado para comunicações relacionadas ao projeto Estética Integrativa.</p>
+<div class="kit-form">
+<script async data-uid="0a363d6b12" src="https://nando-fernandes.kit.com/0a363d6b12/index.js"></script>
 </div>
+<p class="small kit-note">Seu e-mail será utilizado para comunicações relacionadas ao projeto Estética Integrativa.</p>
 </div>
 
 </section>
 <footer>nandofernandes.com · Estética Integrativa</footer>
 </main>
 
-<script>
-const notify=document.getElementById('notifyButton');
-const email=document.getElementById('email');
-const form=document.querySelector('.notify-form');
 
-form.style.display='none';
-
-notify.addEventListener('click',()=>{
-  if(form.style.display==='none'){
-    form.style.display='block';
-    email.focus();
-    return;
-  }
-  const value=email.value.trim();
-  if(!value || !value.includes('@')){
-    alert('Informe um e-mail válido.');
-    return;
-  }
-  alert('Demonstração: o cadastro da lista de interesse será conectado ao serviço de e-mail na versão final.');
-});
-</script>
 </body>
-                                               </html>
+  </html>
